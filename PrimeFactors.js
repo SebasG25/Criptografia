@@ -1,4 +1,4 @@
-const esPrimo = (num) => {
+const isPrime = (num) => {
 
     for (let i = 2; i <= num - 1; i++) {
         if (num % i == 0) {
@@ -12,8 +12,8 @@ const esPrimo = (num) => {
 const findPrimeNumbers = (numberLimit) => {
     var primeNumbers = []
 
-    for (let i = 2; i <= numberLimit; i++) {
-        if (esPrimo(i)) primeNumbers.push(i)
+    for (let i = 2; i < numberLimit; i++) {
+        if (isPrime(i)) primeNumbers.push(i)
     }
 
     return primeNumbers
@@ -27,4 +27,4 @@ const calculatePrimeFactors = (number) => {
 
 
 
-console.log(calculatePrimeFactors(4512));
+console.log(calculatePrimeFactors(45127));
