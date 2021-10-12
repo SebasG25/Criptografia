@@ -19,7 +19,6 @@ const findPrimeNumbers = numberLimit => {
 
 const calculatePrimeFactors = number => {
     var factorsOfNumber = findPrimeNumbers(number).filter(primeNumber => number % primeNumber === 0)
-
     return factorsOfNumber
 }
 
@@ -60,10 +59,10 @@ const main = () => {
     for (let i = 1; i <= 13; i++) {
         var randomNumber = getRandomNumberByDigits(i);
         var start = Date.now()
-        var primeFactors = calculatePrimeFactors(randomNumber);
+        var primeFactors = calculatePrimeFactors(randomNumber); //randomNumber
         var end = Date.now()
         var executionTime = end - start;
-        console.log(`Tiempo de ejecución : ${executionTime}ms para ${i} digitos con ${primeFactors ? primeFactors : "ningún número"} como factores primos para el número ${randomNumber}`);
+        console.log(`Tiempo de ejecución: ${executionTime}ms para ${i} digitos con ${primeFactors.length !== 0 ? primeFactors : 'ningún número'} como factores primos para el número ${randomNumber}`);
     }
 }
 
