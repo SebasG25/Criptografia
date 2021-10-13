@@ -7,52 +7,31 @@ const isPrime = num => {
     return true;
 }
 
-const findPrimeNumbers = numberLimit => {
-    var primeNumbers = []
+const calculatePrimeFactors = number => {
+    var primeArray = [];
 
-    for (let i = 2; i < numberLimit; i++) {
-        if (isPrime(i)) primeNumbers.push(i)
+    for (let i = 2; i <= number; i++) {
+        while(number % i === 0 && isPrime(i)){
+            primeArray.push(i)
+            number /= i;
+        }
     }
 
-    return primeNumbers
+    return primeArray;
 }
 
-const calculatePrimeFactors = number => {
-    var factorsOfNumber = findPrimeNumbers(number).filter(primeNumber => number % primeNumber === 0)
-    return factorsOfNumber
+const random = (min, max) => {
+    return Math.floor(Math.random() * (max - min) + min);
 }
 
 const getRandomNumberByDigits = digits => {
-    var randomNumber;
+    let initialValue = '1'
+    let zero = '0'
+    
+    let minValue = parseInt(initialValue.concat(zero.repeat(digits !== 1 ? digits-1 : 0)), 10) 
+    let maxValue = parseInt(initialValue.concat(zero.repeat(digits !== 1 ? digits : 0)), 10) 
 
-    if (digits === 1) {
-        randomNumber = Math.floor(Math.random() * (10 - 1)) + 1;
-    } else if (digits === 2) {
-        randomNumber = Math.floor(Math.random() * (100 - 10)) + 10;
-    } else if (digits === 3) {
-        randomNumber = Math.floor(Math.random() * (1000 - 100)) + 100;
-    } else if (digits === 4) {
-        randomNumber = Math.floor(Math.random() * (10000 - 1000)) + 1000;
-    } else if (digits === 5) {
-        randomNumber = Math.floor(Math.random() * (100000 - 10000)) + 10000;
-    } else if (digits === 6) {
-        randomNumber = Math.floor(Math.random() * (1000000 - 100000)) + 100000;
-    } else if (digits === 7) {
-        randomNumber = Math.floor(Math.random() * (10000000 - 1000000)) + 1000000;
-    } else if (digits === 8) {
-        randomNumber = Math.floor(Math.random() * (100000000 - 10000000)) + 10000000;
-    } else if (digits === 9) {
-        randomNumber = Math.floor(Math.random() * (1000000000 - 100000000)) + 100000000;
-    } else if (digits === 10) {
-        randomNumber = Math.floor(Math.random() * (10000000000 - 1000000000)) + 1000000000;
-    } else if (digits === 11) {
-        randomNumber = Math.floor(Math.random() * (100000000000 - 10000000000)) + 10000000000;
-    } else if (digits === 12) {
-        randomNumber = Math.floor(Math.random() * (1000000000000 - 100000000000)) + 100000000000;
-    } else
-        randomNumber = Math.floor(Math.random() * (10000000000000 - 1000000000000)) + 1000000000000;
-
-    return randomNumber;
+    return random(minValue, maxValue);
 }
 
 const main = () => {
@@ -62,7 +41,7 @@ const main = () => {
         var primeFactors = calculatePrimeFactors(randomNumber); //randomNumber
         var end = Date.now()
         var executionTime = end - start;
-        console.log(`Tiempo de ejecución: ${executionTime}ms para ${i} digitos con ${primeFactors.length !== 0 ? primeFactors : 'ningún número'} como factores primos para el número ${randomNumber}`);
+        console.log(`Tiempo de ejecución: ${executionTime}ms para ${i} digitos con ${primeFactors.length !== 0 ? `[${primeFactors}]` : 'ningún número'} como factores primos para el número ${randomNumber}`);
     }
 }
 
