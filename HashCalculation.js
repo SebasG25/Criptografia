@@ -26,7 +26,7 @@ const findHash = number => {
     
     while(flag){
         hashObj.hash = sha256(Math.random() + '');
-        if (hashObj.hash.substring(0, number) === prototypeHashes[number]) flag = false;
+        if (hashObj.hash.substring(0, number) === '0'.repeat(number)) flag = false;
         hashObj.iterationCounter++;
     }
 
@@ -38,4 +38,4 @@ const findHash = number => {
 }
 
 
-console.log(findHash(2)); //Inserte un número para encontrar el hash
+console.log(findHash(1)); //Inserte un número para encontrar el hash

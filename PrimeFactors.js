@@ -28,8 +28,8 @@ const getRandomNumberByDigits = digits => {
     let initialValue = '1'
     let zero = '0'
     
-    let minValue = parseInt(initialValue.concat(zero.repeat(digits !== 1 ? digits-1 : 0)), 10) 
-    let maxValue = parseInt(initialValue.concat(zero.repeat(digits !== 1 ? digits : 0)), 10) 
+    let minValue = parseInt(initialValue.concat(zero.repeat(digits-1)), 10) 
+    let maxValue = parseInt(initialValue.concat(zero.repeat(digits)), 10) 
 
     return random(minValue, maxValue);
 }
