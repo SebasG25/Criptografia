@@ -24,5 +24,10 @@ const findHash = number => {
     return hashObj;
 }
 
+const main = () => {
+    for (let i = 1; i <= 5; i++) {
+        console.log(findHash(i))
+    }
+}
 
-console.log(findHash(1)); //Inserte un número para encontrar el hash
+main()
